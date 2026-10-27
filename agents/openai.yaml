@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Team"
+  short_description: "自包含的需求对齐、角色分工、团队调度、证据验收与异常恢复协议"
+  default_prompt: "使用 $agent-team，先复用已有需求并对齐缺口，选择最少必要角色，在确认的范围和成本内推进并验收。"
