@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "run_id": "illustrative-order-summary",
+  "protocol_version": "0.5.0",
+  "evidence_level": "illustrative",
+  "requirements": {
+    "REQ-total": "R2"
+  },
+  "tasks": [
+    {
+      "id": "CALC",
+      "owner": "example-worker-a",
+      "status": "accepted",
+      "artifact_revision": "P1",
+      "requirements": {
+        "REQ-total": "R2"
+      },
+      "inputs": {},
+      "waiting_on": [],
+      "acceptance": {
+        "artifact_revision": "P1",
+        "requirements": {
+          "REQ-total": "R2"
+        },
+        "inputs": {},
+        "reviewer": "example-manager",
+        "evidence": [
+          "ILLUSTRATIVE ONLY: see examples/small-team/README.md; no real execution log"
+        ]
+      }
+    },
+    {
+      "id": "CLI",
+      "owner": "example-worker-b",
+      "status": "review_required",
+      "artifact_revision": "C2",
+      "requirements": {
+        "REQ-total": "R2"
+      },
+      "inputs": {
+        "CALC": "P1"
+      },
+      "waiting_on": [],
+      "acceptance": {
+        "artifact_revision": "C2",
+        "requirements": {
+          "REQ-total": "R2"
+        },
+        "inputs": {
+          "CALC": "P1"
+        },
+        "reviewer": "example-manager",
+        "evidence": [
+          "ILLUSTRATIVE ONLY: see examples/small-team/README.md; no real execution log"
+        ]
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "fix-cli-r2",
+      "task_id": "CLI",
+      "input_version": "REQ-total@R2/CALC:P1",
+      "payload": {
+        "operation": "implement-r2",
+        "scope": "product/cli.py"
+      },
+      "state": "unknown",
+      "result_ref": null
+    },
+    {
+      "id": "retry-cli-r2",
+      "task_id": "CLI",
+      "input_version": "REQ-total@R2/CALC:P1",
+      "payload": {
+        "operation": "implement-r2",
+        "scope": "product/cli.py"
+      },
+      "state": "pending",
+      "result_ref": null,
+      "retry_of": "fix-cli-r2",
+      "retry_decision_ref": "ILLUSTRATIVE:an unverified request is not authority"
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "delivery-1",
+      "action_id": "fix-cli-r2",
+      "task_id": "CLI",
+      "input_version": "REQ-total@R2/CALC:P1",
+      "payload": {
+        "operation": "implement-r2",
+        "scope": "product/cli.py"
+      }
+    },
+    {
+      "id": "delivery-2",
+      "action_id": "fix-cli-r2",
+      "task_id": "CLI",
+      "input_version": "REQ-total@R2/CALC:P1",
+      "payload": {
+        "operation": "implement-r2",
+        "scope": "product/cli.py"
+      }
+    }
+  ],
+  "executions": [
+    {
+      "id": "execution-1",
+      "action_id": "fix-cli-r2"
+    }
+  ],
+  "metrics": {
+    "accepted_deliverables": 1,
+    "elapsed_minutes": null,
+    "review_wait_minutes": null,
+    "integration_wait_minutes": null,
+    "rework_batches": 1,
+    "billed_cost": null
+  }
+}

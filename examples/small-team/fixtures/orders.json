@@ -1,0 +1,5 @@
+[
+  {"id": "order-a", "status": "paid", "amount_cents": 1200},
+  {"id": "order-b", "status": "cancelled", "amount_cents": 500},
+  {"id": "order-c", "status": "paid", "amount_cents": 600}
+]

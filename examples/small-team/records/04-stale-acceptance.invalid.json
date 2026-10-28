@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "run_id": "illustrative-order-summary",
+  "protocol_version": "0.5.0",
+  "evidence_level": "illustrative",
+  "requirements": {
+    "REQ-total": "R2"
+  },
+  "tasks": [
+    {
+      "id": "CALC",
+      "owner": "example-worker-a",
+      "status": "accepted",
+      "artifact_revision": "P1",
+      "requirements": {
+        "REQ-total": "R1"
+      },
+      "inputs": {},
+      "waiting_on": [],
+      "acceptance": {
+        "artifact_revision": "P1",
+        "requirements": {
+          "REQ-total": "R1"
+        },
+        "inputs": {},
+        "reviewer": "example-manager",
+        "evidence": [
+          "ILLUSTRATIVE ONLY: see examples/small-team/README.md; no real execution log"
+        ]
+      }
+    },
+    {
+      "id": "CLI",
+      "owner": "example-worker-b",
+      "status": "accepted",
+      "artifact_revision": "C1",
+      "requirements": {
+        "REQ-total": "R1"
+      },
+      "inputs": {
+        "CALC": "P1"
+      },
+      "waiting_on": [],
+      "acceptance": {
+        "artifact_revision": "C1",
+        "requirements": {
+          "REQ-total": "R1"
+        },
+        "inputs": {
+          "CALC": "P1"
+        },
+        "reviewer": "example-manager",
+        "evidence": [
+          "ILLUSTRATIVE ONLY: see examples/small-team/README.md; no real execution log"
+        ]
+      }
+    }
+  ],
+  "actions": [],
+  "deliveries": [],
+  "executions": [],
+  "metrics": {
+    "accepted_deliverables": 2,
+    "elapsed_minutes": null,
+    "review_wait_minutes": null,
+    "integration_wait_minutes": null,
+    "rework_batches": 0,
+    "billed_cost": null
+  }
+}
